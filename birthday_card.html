@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Birthday Card</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom, pink, lavender);
+    font-family: Arial;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 60px;
+    font-size: 60px;
+    color: purple;
+}
+
+p {
+    font-size: 24px;
+    color: white;
+}
+
+.balloon {
+    width: 100px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    animation: float 5s infinite ease-in-out;
+}
+
+.red {
+    background: red;
+    left: 20%;
+    top: 55%;
+}
+
+.blue {
+    background: blue;
+    left: 45%;
+    top: 65%;
+}
+
+.yellow {
+    background: gold;
+    left: 70%;
+    top: 55%;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-40px); }
+    100% { transform: translateY(0px); }
+}
+
+.confetti {
+    position: absolute;
+    font-size: 25px;
+    animation: explode 2s linear forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: translate(0,0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                calc((var(--x) - 0.5) * 500px),
+                calc((var(--y) - 0.5) * 500px)
+            )
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Birthday Jamie! 🎉</h1>
+
+<p>Click the balloons!</p>
+
+<div class="balloon red" onclick="popBalloon(this)"></div>
+<div class="balloon blue" onclick="popBalloon(this)"></div>
+<div class="balloon yellow" onclick="popBalloon(this)"></div>
+
+<script>
+function popBalloon(balloon) {
+
+    let rect = balloon.getBoundingClientRect();
+
+    // Hide balloon
+    balloon.style.display = "none";
+
+    // Create confetti
+    for (let i = 0; i < 80; i++) {
+
+        let confetti = document.createElement("div");
+
+        confetti.className = "confetti";
+        confetti.innerHTML = ["🎉","✨","🎊","💖"][Math.floor(Math.random()*4)];
+
+        confetti.style.left = rect.left + 40 + "px";
+        confetti.style.top = rect.top + 40 + "px";
+
+        confetti.style.setProperty("--x", Math.random());
+        confetti.style.setProperty("--y", Math.random());
+
+        document.body.appendChild(confetti);
+
+        // Remove confetti later
+        setTimeout(() => {
+            confetti.remove();
+        }, 2000);
+    }
+}
+</script>
+
+</body>
+</html>
