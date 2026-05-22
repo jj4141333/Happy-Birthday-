@@ -36,6 +36,23 @@ p {
         inset 10px 10px 20px rgba(255,255,255,0.3),
         0 10px 20px rgba(0,0,0,0.2);
 }
+    .balloon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 30px;
+    height: 40px;
+
+    background: rgba(255,255,255,0.5);
+
+    border-radius: 50%;
+
+    top: 20px;
+    left: 20px;
+
+    transform: rotate(25deg);
+}
 
 .red {
     background: red;
