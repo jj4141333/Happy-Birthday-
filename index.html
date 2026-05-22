@@ -24,12 +24,17 @@ p {
 }
 
 .balloon {
-    width: 100px;
-    height: 120px;
+    width: 110px;
+    height: 130px;
     border-radius: 50%;
     position: absolute;
     cursor: pointer;
     animation: float 5s infinite ease-in-out;
+
+    box-shadow:
+        inset -10px -15px 20px rgba(0,0,0,0.2),
+        inset 10px 10px 20px rgba(255,255,255,0.3),
+        0 10px 20px rgba(0,0,0,0.2);
 }
 
 .red {
