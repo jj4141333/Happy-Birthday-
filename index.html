@@ -4,18 +4,20 @@
 <title>Birthday Card</title>
 
 <style>
+
 body {
     margin: 0;
     overflow: hidden;
     background: linear-gradient(to bottom, #FF87D8, #37BFC4);
-    font-family: Bebas;
+    font-family: Arial, sans-serif;
     text-align: center;
 }
 
 h1 {
     margin-top: 60px;
     font-size: 60px;
-    color: purple;
+    color: white;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 p {
@@ -23,16 +25,34 @@ p {
     color: white;
 }
 
+/* Balloon wrapper */
 .balloon-wrapper {
     position: absolute;
-    animation: float 5s infinite ease-in-out;
+
+    /* easier testing */
+    animation: none;
+
+    transition: transform 0.3s;
 }
 
+/* Floating animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-40px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Balloon */
 .balloon {
     width: 110px;
     height: 130px;
+
     border-radius: 50%;
+
     cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
 
     box-shadow:
         inset -10px -15px 20px rgba(0,0,0,0.2),
@@ -40,66 +60,93 @@ p {
         0 10px 20px rgba(0,0,0,0.2);
 }
 
+/* Balloon shine */
 .balloon::before {
     content: "";
+
     position: absolute;
-    width: 30px;
-    height: 40px;
-    background: #FFFFFF;
+
+    width: 35px;
+    height: 50px;
+
+    background: rgba(255,255,255,0.55);
+
     border-radius: 50%;
-    top: 20px;
-    left: 20px;
+
+    top: 15px;
+    left: 18px;
+
     transform: rotate(25deg);
-    filter: blur(8px);
+
+    filter: blur(6px);
 }
 
+/* Balloon knot */
+.balloon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    background: inherit;
+
+    bottom: -8px;
+    left: 46px;
+
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+/* String */
 .string {
     width: 2px;
-    height: 300px;
-    background: rgba(0, 0, 0, 0.7);
+    height: 250px;
+
+    background: rgba(0,0,0,0.7);
+
     margin: 0 auto;
 }
 
+/* Balloon colors */
 .red {
-    background: red;
+    background: #FF4D6D;
 }
 
 .blue {
-    background: cyan;
+    background: #4CC9F0;
 }
 
 .yellow {
-    background: dandelion;
+    background: #FFD93D;
 }
 
+/* Balloon positions */
 .red-wrapper {
-    left: 10%;
-    top: 55%;
+    left: 150px;
+    top: 280px;
 }
 
 .blue-wrapper {
-    left: 45%;
-    top: 65%;
+    left: 600px;
+    top: 380px;
 }
 
 .yellow-wrapper {
-    left: 70%;
-    top: 55%;
+    left: 1000px;
+    top: 280px;
 }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-40px); }
-    100% { transform: translateY(0px); }
-}
-
+/* Confetti */
 .confetti {
     position: absolute;
     font-size: 25px;
+
     animation: explode 2s linear forwards;
 }
 
 @keyframes explode {
+
     0% {
         transform: translate(0,0) rotate(0deg);
         opacity: 1;
@@ -116,6 +163,7 @@ p {
         opacity: 0;
     }
 }
+
 </style>
 </head>
 
@@ -123,53 +171,94 @@ p {
 
 <h1>Happy Birthday Mom! 🎉</h1>
 
-<p>test!</p>
+<p>Click the balloons!</p>
 
-<div class="balloon-wrapper red-wrapper" onclick="popBalloon(this)">
+<!-- RED -->
+<div class="balloon-wrapper red-wrapper"
+onclick="popBalloon(this)">
+
     <div class="balloon red"></div>
+
     <div class="string"></div>
+
 </div>
 
-<div class="balloon-wrapper blue-wrapper" onclick="popBalloon(this)">
+<!-- BLUE -->
+<div class="balloon-wrapper blue-wrapper"
+onclick="popBalloon(this)">
+
     <div class="balloon blue"></div>
+
     <div class="string"></div>
+
 </div>
 
-<div class="balloon-wrapper yellow-wrapper" onclick="popBalloon(this)">
+<!-- YELLOW -->
+<div class="balloon-wrapper yellow-wrapper"
+onclick="popBalloon(this)">
+
     <div class="balloon yellow"></div>
+
     <div class="string"></div>
+
 </div>
 
 <script>
+
 function popBalloon(wrapper) {
 
     let rect = wrapper.getBoundingClientRect();
 
-    // Hide balloon wrapper
+    // hide balloon
     wrapper.style.display = "none";
 
-    // Create confetti
+    // confetti explosion
     for (let i = 0; i < 80; i++) {
 
-        let confetti = document.createElement("div");
+        let confetti =
+            document.createElement("div");
 
         confetti.className = "confetti";
-        confetti.innerHTML = ["🎉","✨","🎊","💖"][Math.floor(Math.random()*4)];
 
-        confetti.style.left = rect.left + 40 + "px";
-        confetti.style.top = rect.top + 40 + "px";
+        confetti.innerHTML =
+            ["🎉","✨","🎊","💖"]
+            [Math.floor(Math.random()*4)];
 
-        confetti.style.setProperty("--x", Math.random());
-        confetti.style.setProperty("--y", Math.random());
+        confetti.style.left =
+            rect.left + 40 + "px";
+
+        confetti.style.top =
+            rect.top + 40 + "px";
+
+        confetti.style.setProperty(
+            "--x",
+            Math.random()
+        );
+
+        confetti.style.setProperty(
+            "--y",
+            Math.random()
+        );
 
         document.body.appendChild(confetti);
 
-        // Remove confetti later
+        // cleanup
         setTimeout(() => {
             confetti.remove();
         }, 2000);
     }
 }
+
+/* TURN FLOATING BACK ON AFTER POSITIONING */
+
+document.querySelectorAll(".balloon-wrapper")
+.forEach(balloon => {
+
+    balloon.style.animation =
+        "float 5s infinite ease-in-out";
+
+});
+
 </script>
 
 </body>
