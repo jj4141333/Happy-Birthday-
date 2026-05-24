@@ -24,6 +24,23 @@ p {
     font-size: 24px;
     color: white;
 }
+    #final-message {
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 70px;
+
+    color: white;
+
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+    display: none;
+}
 
 .balloon-wrapper {
     position: absolute;
@@ -345,11 +362,17 @@ onclick="orangeBalloonClick(this)">
 <div class="speech-bubble-4">
     We're going to make Confetti GREAT again. No more China balloons. 
 </div>
+
+<div id="final-message">
+    You're the best mom ever! ❤️
+</div>
     
 </div>
 
 <script>
-
+    
+let poppedBalloons = 0;
+    
     let orangeClicks = 0;
     function orangeBalloonClick(wrapper) {
 
@@ -407,7 +430,14 @@ function popBalloon(wrapper) {
     let rect = wrapper.getBoundingClientRect();
 
     wrapper.style.display = "none";
+    
+poppedBalloons++;
+    if (poppedBalloons >= 5) {
 
+    document.getElementById("final-message")
+    .style.display = "block";
+}
+    
     for (let i = 0; i < 80; i++) {
 
         let confetti =
