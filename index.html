@@ -127,6 +127,10 @@ p {
     background: #FF4D6D;
 }
 
+.orange {
+    background: #FF8C00;
+}
+
 .blue {
     background: #4CC9F0;
 }
@@ -142,6 +146,11 @@ p {
 .red-wrapper {
     left: 600px;
     top: 280px;
+}
+
+.orange-wrapper {
+    left: 700px;
+    top: 400px;
 }
 
 .blue-wrapper {
@@ -190,7 +199,7 @@ p {
 
 <h1>Happy Birthday Mom! 🎉</h1>
 
-<p>Click the balloons!</p>
+<p>Click the balloons! (Zoom out if you can't see them)</p>
 
 <div class="balloon-wrapper red-wrapper"
 onclick="popBalloon(this)">
@@ -223,6 +232,16 @@ onclick="popBalloon(this)">
 onclick="popBalloon(this)">
 
     <div class="balloon green"></div>
+
+    <div class="string"></div>
+
+</div>
+
+
+    <div class="balloon-wrapper orange-wrapper"
+onclick="popBalloon(this)">
+
+    <div class="balloon orange"></div>
 
     <div class="string"></div>
 
