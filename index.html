@@ -4,7 +4,10 @@
 <title>Birthday Card</title>
 
 <style>
-
+    
+index.html
+confetti1.png
+    
 body {
     margin: 0;
     overflow: hidden;
@@ -424,7 +427,65 @@ wrapper.querySelectorAll(
         popBalloon(wrapper);
     }
 }
+document.addEventListener("click", function(e) {
+
+    if (poppedBalloons < 5) return;
+
+    if (e.target.closest(".balloon-wrapper")) return;
+
+    launchConfettiImage();
+});
     
+function launchConfettiImage() {
+
+    let confetti = document.createElement("img");
+
+    confetti.src = "confetti1.png";
+
+    confetti.style.position = "fixed";
+
+    confetti.style.width = "80px";
+
+    confetti.style.left =
+        Math.random() * window.innerWidth + "px";
+
+    confetti.style.bottom = "-100px";
+
+    confetti.style.pointerEvents = "none";
+
+    confetti.style.zIndex = "9999";
+
+    document.body.appendChild(confetti);
+
+    let randomX =
+        (Math.random() - 0.5) * 600;
+
+    let randomY =
+        Math.random() * 500 + 200;
+
+    confetti.animate(
+        [
+            {
+                transform:
+                    "translate(0px, 0px) rotate(0deg)"
+            },
+
+            {
+                transform:
+                    `translate(${randomX}px, -${randomY}px) rotate(720deg)`
+            }
+        ],
+        {
+            duration: 1500,
+            easing: "ease-out",
+            fill: "forwards"
+        }
+    );
+
+    setTimeout(() => {
+        confetti.remove();
+    }, 1500);
+} 
 function popBalloon(wrapper) {
 
     let rect = wrapper.getBoundingClientRect();
