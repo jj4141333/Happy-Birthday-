@@ -33,6 +33,28 @@ p {
         float 5s ease-in-out infinite 2s;
 }
 
+    .speech-bubble {
+
+    position: absolute;
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 20px;
+
+    width: 220px;
+
+    font-size: 20px;
+
+    color: black;
+
+    top: -40px;
+    left: 120px;
+
+    display: none;
+}
+
 @keyframes float {
 
     0% {
@@ -243,7 +265,10 @@ onclick="orangeBalloonClick(this)">
     <div class="balloon orange"></div>
 
     <div class="string"></div>
-
+<div class="speech-bubble">
+    WOAH THERE! Who said you could pop me?
+</div>
+    
 </div>
 
 <script>
@@ -254,6 +279,12 @@ orangeClicks++;
  if (orangeClicks >= 15) {
     popBalloon(wrapper);
 }
+if (orangeClicks >= 2) {
+
+    wrapper.querySelector(".speech-bubble")
+    .style.display = "block";
+}
+        
 }
     
 function popBalloon(wrapper) {
