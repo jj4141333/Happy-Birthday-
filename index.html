@@ -55,6 +55,71 @@ p {
     display: none;
 }
 
+    
+    .speech-bubble-2 {
+
+    position: absolute;
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 20px;
+
+    width: 220px;
+
+    font-size: 20px;
+
+    color: black;
+
+    top: -40px;
+    left: 120px;
+
+    display: none;
+}
+    .speech-bubble-3 {
+
+    position: absolute;
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 20px;
+
+    width: 220px;
+
+    font-size: 20px;
+
+    color: black;
+
+    top: -40px;
+    left: 120px;
+
+    display: none;
+}
+        .speech-bubble-4 {
+
+    position: absolute;
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 20px;
+
+    width: 220px;
+
+    font-size: 20px;
+
+    color: black;
+
+    top: -40px;
+    left: 120px;
+
+    display: none;
+}
+
 @keyframes float {
 
     0% {
@@ -268,6 +333,18 @@ onclick="orangeBalloonClick(this)">
 <div class="speech-bubble">
     WOAH THERE! Who said you could pop me?
 </div>
+
+<div class="speech-bubble-2">
+    Quite frankly, from the Standpoint of Balloons. I am The greatest Balloon.
+</div>
+
+<div class="speech-bubble-3">
+    covefe
+</div>
+
+<div class="speech-bubble-4">
+    We're going to make Confetti GREAT again. No more China balloons. 
+</div>
     
 </div>
 
@@ -275,16 +352,37 @@ onclick="orangeBalloonClick(this)">
 
     let orangeClicks = 0;
     function orangeBalloonClick(wrapper) {
-orangeClicks++;
- if (orangeClicks >= 15) {
-    popBalloon(wrapper);
-}
-if (orangeClicks >= 2) {
 
-    wrapper.querySelector(".speech-bubble")
-    .style.display = "block";
-}
-        
+    orangeClicks++;
+
+    if (orangeClicks >= 2) {
+
+        wrapper.querySelector(".speech-bubble")
+        .style.display = "block";
+    }
+
+    if (orangeClicks >= 4) {
+
+        wrapper.querySelector(".speech-bubble-2")
+        .style.display = "block";
+    }
+
+    if (orangeClicks >= 6) {
+
+        wrapper.querySelector(".speech-bubble-3")
+        .style.display = "block";
+    }
+
+    if (orangeClicks >= 10) {
+
+        wrapper.querySelector(".speech-bubble-4")
+        .style.display = "block";
+    }
+
+    if (orangeClicks >= 15) {
+
+        popBalloon(wrapper);
+    }
 }
     
 function popBalloon(wrapper) {
