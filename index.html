@@ -357,24 +357,41 @@ onclick="orangeBalloonClick(this)">
 
     if (orangeClicks >= 2) {
 
+        wrapper.querySelectorAll(
+    ".speech-bubble, .speech-bubble-2, .speech-bubble-3, .speech-bubble-4"
+).forEach(bubble => {
+    bubble.style.display = "none";
+});
         wrapper.querySelector(".speech-bubble")
         .style.display = "block";
     }
 
     if (orangeClicks >= 4) {
-
+wrapper.querySelectorAll(
+    ".speech-bubble, .speech-bubble-2, .speech-bubble-3, .speech-bubble-4"
+).forEach(bubble => {
+    bubble.style.display = "none";
+});
         wrapper.querySelector(".speech-bubble-2")
         .style.display = "block";
     }
 
     if (orangeClicks >= 6) {
-
+wrapper.querySelectorAll(
+    ".speech-bubble, .speech-bubble-2, .speech-bubble-3, .speech-bubble-4"
+).forEach(bubble => {
+    bubble.style.display = "none";
+});
         wrapper.querySelector(".speech-bubble-3")
         .style.display = "block";
     }
 
     if (orangeClicks >= 10) {
-
+wrapper.querySelectorAll(
+    ".speech-bubble, .speech-bubble-2, .speech-bubble-3, .speech-bubble-4"
+).forEach(bubble => {
+    bubble.style.display = "none";
+});
         wrapper.querySelector(".speech-bubble-4")
         .style.display = "block";
     }
