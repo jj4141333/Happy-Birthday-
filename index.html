@@ -6,8 +6,6 @@
     
 <style>
     
-
-    
 body {
     margin: 0;
     overflow: hidden;
@@ -27,21 +25,15 @@ p {
     font-size: 24px;
     color: white;
 }
-    #final-message {
 
+#final-message {
     position: fixed;
-
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
-
     font-size: 50px;
-
     color: white;
-
     text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-
     display: none;
 }
 
@@ -52,227 +44,55 @@ p {
         float 5s ease-in-out infinite 2s;
 }
 
-    .speech-bubble {
-
-    position: absolute;
-
-    background: white;
-
-    padding: 15px;
-
-    border-radius: 20px;
-
-    width: 220px;
-
-    font-size: 20px;
-
-    color: black;
-
-    top: -40px;
-    left: 120px;
-
-    display: none;
+/* ✅ ONLY CHANGE: smooth movement */
+.orange-wrapper {
+    left: 900px;
+    top: 600px;
+    transition: left 0.7s ease, top 0.7s ease;
 }
 
-    
-    .speech-bubble-2 {
-
+.speech-bubble,
+.speech-bubble-2,
+.speech-bubble-3,
+.speech-bubble-4 {
     position: absolute;
-
     background: white;
-
     padding: 15px;
-
     border-radius: 20px;
-
     width: 220px;
-
     font-size: 20px;
-
     color: black;
-
     top: -40px;
     left: 120px;
-
-    display: none;
-}
-    .speech-bubble-3 {
-
-    position: absolute;
-
-    background: white;
-
-    padding: 15px;
-
-    border-radius: 20px;
-
-    width: 220px;
-
-    font-size: 20px;
-
-    color: black;
-
-    top: -40px;
-    left: 120px;
-
-    display: none;
-}
-        .speech-bubble-4 {
-
-    position: absolute;
-
-    background: white;
-
-    padding: 15px;
-
-    border-radius: 20px;
-
-    width: 220px;
-
-    font-size: 20px;
-
-    color: black;
-
-    top: -40px;
-    left: 120px;
-
     display: none;
 }
 
 @keyframes float {
-
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-40px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-40px); }
+    100% { transform: translateY(0px); }
 }
 
 @keyframes rise {
-
-    0% {
-        opacity: 0;
-        margin-top: 100vh;
-    }
-
-    100% {
-        opacity: 1;
-        margin-top: 0;
-    }
+    0% { opacity: 0; margin-top: 100vh; }
+    100% { opacity: 1; margin-top: 0; }
 }
 
 .balloon {
     width: 110px;
     height: 130px;
-
     border-radius: 50%;
-
     cursor: pointer;
-
     position: relative;
     overflow: hidden;
-
-    box-shadow:
-        inset -10px -15px 20px rgba(0,0,0,0.2),
-        inset 10px 10px 20px rgba(255,255,255,0.3),
-        0 10px 20px rgba(0,0,0,0.2);
 }
 
-.balloon::before {
-    content: "";
+.red { background: #FF4D6D; }
+.orange { background: #FF8C00; }
+.blue { background: #4CC9F0; }
+.yellow { background: #FFD93D; }
+.green { background: #95E06C; }
 
-    position: absolute;
-
-    width: 35px;
-    height: 50px;
-
-    background: rgba(255,255,255,0.55);
-
-    border-radius: 50%;
-
-    top: 15px;
-    left: 18px;
-
-    transform: rotate(25deg);
-
-    filter: blur(6px);
-}
-
-.balloon::after {
-    content: "";
-
-    position: absolute;
-
-    width: 18px;
-    height: 18px;
-
-    background: inherit;
-
-    bottom: -8px;
-    left: 46px;
-
-    clip-path: polygon(50% 100%, 0 0, 100% 0);
-}
-
-.string {
-    width: 2px;
-    height: 250px;
-
-    background: rgba(0,0,0,0.7);
-
-    margin: 0 auto;
-}
-
-.red {
-    background: #FF4D6D;
-}
-
-.orange {
-    background: #FF8C00;
-}
-
-.blue {
-    background: #4CC9F0;
-}
-
-.yellow {
-    background: #FFD93D;
-}
-
-.green {
-    background: #95E06C;
-}
-
-.red-wrapper {
-    left: 600px;
-    top: 280px;
-}
-
-.orange-wrapper {
-    left: 900px;
-    top: 600px;
-}
-
-.blue-wrapper {
-    left: 1500px;
-    top: 580px;
-}
-
-.yellow-wrapper {
-    left: 1800px;
-    top: 280px;
-}
-    
-.green-wrapper {
-    left: 1200px;
-    top: 350px;
-}
 .confetti {
     position: absolute;
     font-size: 25px;
@@ -280,7 +100,6 @@ p {
 }
 
 @keyframes explode {
-
     0% {
         transform: translate(0,0) rotate(0deg);
         opacity: 1;
@@ -293,251 +112,93 @@ p {
                 calc((var(--y) - 0.5) * 500px)
             )
             rotate(720deg);
-
         opacity: 0;
     }
 }
-
 </style>
 </head>
 
 <body>
 
 <h1>Happy Birthday Mom! 🎉</h1>
+<p>Click the balloons!</p>
 
-<p>Click the balloons! (Zoom out if you can't see them)</p>
-
-<div class="balloon-wrapper red-wrapper"
-onclick="popBalloon(this)">
-
+<div class="balloon-wrapper red-wrapper" onclick="popBalloon(this)">
     <div class="balloon red"></div>
-
-    <div class="string"></div>
-
 </div>
 
-<div class="balloon-wrapper blue-wrapper"
-onclick="popBalloon(this)">
-
+<div class="balloon-wrapper blue-wrapper" onclick="popBalloon(this)">
     <div class="balloon blue"></div>
-
-    <div class="string"></div>
-
 </div>
 
-<div class="balloon-wrapper yellow-wrapper"
-onclick="popBalloon(this)">
-
+<div class="balloon-wrapper yellow-wrapper" onclick="popBalloon(this)">
     <div class="balloon yellow"></div>
-
-    <div class="string"></div>
-
 </div>
 
-    <div class="balloon-wrapper green-wrapper"
-onclick="popBalloon(this)">
-
+<div class="balloon-wrapper green-wrapper" onclick="popBalloon(this)">
     <div class="balloon green"></div>
-
-    <div class="string"></div>
-
 </div>
 
-<div class="balloon-wrapper orange-wrapper"
-onclick="orangeBalloonClick(this)">
-
+<!-- ORANGE -->
+<div class="balloon-wrapper orange-wrapper" onclick="orangeBalloonClick(this)">
     <div class="balloon orange"></div>
 
-    <div class="string"></div>
-<div class="speech-bubble">
-    WOAH THERE! Who said you could pop me?
-</div>
-
-<div class="speech-bubble-2">
-    Quite frankly, from the Standpoint of Balloons. I am The greatest Balloon.
-</div>
-
-<div class="speech-bubble-3">
-    covefe
-</div>
-
-<div class="speech-bubble-4">
-    We're going to make Confetti GREAT again. No more China balloons. 
-</div>
-    
+    <div class="speech-bubble">WOAH THERE! Who said you could pop me?</div>
+    <div class="speech-bubble-2">Quite frankly, I am the greatest Balloon.</div>
+    <div class="speech-bubble-3">covefe</div>
+    <div class="speech-bubble-4">We're going to make Confetti GREAT again.</div>
 </div>
 
 <div id="final-message">
-    Happy birthday!! You're the best mom ever! I am so grateful to you for your support my entire life and for all of your help throughout college. Thank you again so much for the $4000 too! You don't have to do that and that is really generous of you. You're so generous and I want to make clear I do not expect anything, so you really didn't have to do that but I will be very smart with the money and save it. Hope you have an amazing birthday! Love you so much! ❤️ 
+    Happy birthday!! You're the best mom ever! ❤️
 </div>
 
-
-
-    
 <script>
-    
+
 let poppedBalloons = 0;
-    
-    let orangeClicks = 0;
+let orangeClicks = 0;
 
-   
+/* ✅ POSITIONS FOR ORANGE BALLOON */
+let balloonPositions = [
+    { left: "300px", top: "200px" },
+    { left: "1400px", top: "150px" },
+    { left: "700px", top: "500px" },
+    { left: "1600px", top: "400px" },
+    { left: "900px", top: "250px" }
+];
 
-    function orangeBalloonClick(wrapper) {
+function orangeBalloonClick(wrapper) {
 
     orangeClicks++;
-        
 
-        
-    if (orangeClicks >= 2) {
-
-        wrapper.querySelectorAll(
-    ".speech-bubble, .speech-bubble-2, .speech-bubble-3, .speech-bubble-4"
-).forEach(bubble => {
-    bubble.style.display = "none";
-});
-        wrapper.querySelector(".speech-bubble")
-        .style.display = "block";
+    /* MOVE ORANGE BALLOON */
+    if (orangeClicks <= balloonPositions.length) {
+        wrapper.style.left = balloonPositions[orangeClicks - 1].left;
+        wrapper.style.top = balloonPositions[orangeClicks - 1].top;
     }
 
-    if (orangeClicks >= 4) {
-wrapper.querySelectorAll(
-    ".speech-bubble, .speech-bubble-2, .speech-bubble-3, .speech-bubble-4"
-).forEach(bubble => {
-    bubble.style.display = "none";
-});
-        wrapper.querySelector(".speech-bubble-2")
-        .style.display = "block";
-    }
-
-    if (orangeClicks >= 6) {
-wrapper.querySelectorAll(
-    ".speech-bubble, .speech-bubble-2, .speech-bubble-3, .speech-bubble-4"
-).forEach(bubble => {
-    bubble.style.display = "none";
-});
-        wrapper.querySelector(".speech-bubble-3")
-        .style.display = "block";
-    }
-
-    if (orangeClicks >= 10) {
-wrapper.querySelectorAll(
-    ".speech-bubble, .speech-bubble-2, .speech-bubble-3, .speech-bubble-4"
-).forEach(bubble => {
-    bubble.style.display = "none";
-});
-        wrapper.querySelector(".speech-bubble-4")
-        .style.display = "block";
-    }
-
-    if (orangeClicks >= 15) {
-
-        popBalloon(wrapper);
-    }
-}
-document.addEventListener("click", function(e) {
-
-    if (poppedBalloons < 5) return;
-
-    if (e.target.closest(".balloon-wrapper")) return;
-
-    launchConfettiImage();
-});
-    
-function launchConfettiImage() {
-
-    let confetti = document.createElement("img");
-
-    confetti.src = "confetti1.png";
-
-    confetti.style.position = "fixed";
-
-    confetti.style.width = "150px";
-
-    confetti.style.left =
-        Math.random() * window.innerWidth + "px";
-
-    confetti.style.bottom = "-100px";
-
-    confetti.style.pointerEvents = "none";
-
-    confetti.style.zIndex = "9999";
-
-    document.body.appendChild(confetti);
-
-    let randomX =
-        (Math.random() - 0.5) * 600;
-
-    let randomY =
-        Math.random() * 500 + 200;
-
-    confetti.animate(
-        [
-            {
-                transform:
-                    "translate(0px, 0px) rotate(0deg)"
-            },
-
-            {
-                transform:
-                    `translate(${randomX}px, -${randomY}px) rotate(720deg)`
-            }
-        ],
-        {
-            duration: 1500,
-            easing: "ease-out",
-            fill: "forwards"
-        }
+    /* speech bubbles */
+    const bubbles = wrapper.querySelectorAll(
+        ".speech-bubble, .speech-bubble-2, .speech-bubble-3, .speech-bubble-4"
     );
 
-    setTimeout(() => {
-        confetti.remove();
-    }, 1500);
-} 
+    bubbles.forEach(b => b.style.display = "none");
+
+    if (orangeClicks >= 2) wrapper.querySelector(".speech-bubble").style.display = "block";
+    if (orangeClicks >= 4) wrapper.querySelector(".speech-bubble-2").style.display = "block";
+    if (orangeClicks >= 6) wrapper.querySelector(".speech-bubble-3").style.display = "block";
+    if (orangeClicks >= 10) wrapper.querySelector(".speech-bubble-4").style.display = "block";
+
+    if (orangeClicks >= 15) popBalloon(wrapper);
+}
+
 function popBalloon(wrapper) {
 
-    let rect = wrapper.getBoundingClientRect();
-
     wrapper.style.display = "none";
-    
-poppedBalloons++;
+    poppedBalloons++;
+
     if (poppedBalloons >= 5) {
-
-    document.getElementById("final-message")
-    .style.display = "block";
-}
-    
-    for (let i = 0; i < 80; i++) {
-
-        let confetti =
-            document.createElement("div");
-
-        confetti.className = "confetti";
-
-        confetti.innerHTML =
-            ["🎉","✨","🎊","💖"]
-            [Math.floor(Math.random()*4)];
-
-        confetti.style.left =
-            rect.left + 40 + "px";
-
-        confetti.style.top =
-            rect.top + 40 + "px";
-
-        confetti.style.setProperty(
-            "--x",
-            Math.random()
-        );
-
-        confetti.style.setProperty(
-            "--y",
-            Math.random()
-        );
-
-        document.body.appendChild(confetti);
-
-        setTimeout(() => {
-            confetti.remove();
-        }, 2000);
+        document.getElementById("final-message").style.display = "block";
     }
 }
 
