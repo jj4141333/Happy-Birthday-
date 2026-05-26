@@ -47,7 +47,6 @@ p {
 
 .balloon-wrapper {
     position: absolute;
-transition: left 0.5s ease, top 0.5s ease;
     animation:
         rise 2s ease-out,
         float 5s ease-in-out infinite 2s;
@@ -381,32 +380,14 @@ let poppedBalloons = 0;
     
     let orangeClicks = 0;
 
-    let balloonPositions = [
-
-    { left: "300px", top: "200px" },
-
-    { left: "1400px", top: "150px" },
-
-    { left: "700px", top: "500px" },
-
-    { left: "1600px", top: "400px" },
-
-     { left: "1500px", top: "300px" }
-
+   
 
 ];
     function orangeBalloonClick(wrapper) {
 
     orangeClicks++;
         
-if (orangeClicks <= balloonPositions.length) {
 
-    wrapper.style.left =
-        balloonPositions[orangeClicks - 1].left;
-
-    wrapper.style.top =
-        balloonPositions[orangeClicks - 1].top;
-}
         
     if (orangeClicks >= 2) {
 
